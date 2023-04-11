@@ -5,6 +5,9 @@
 //card_height = 92;
 //card_depth = 30;
 
+// Print in place or separated
+print_in_place = true;
+
 // Daño
 // Width of the card deck
 card_width = 44;
@@ -35,8 +38,11 @@ hinge_r = 2;
 hinge_slot_r = hinge_r+hinge_r*0.25; 
 // Sides resolution
 sides = 360;
+// Text margin with box borders
 text_margin = 2;
+// Shorten the deck box at the top
 card_box_shorten = 4;
+
 
 // Sizes of card box and tray
 box_width = card_width+dwall+d_card_padding; 
@@ -83,6 +89,18 @@ module tray(){
             rotate([0,90,0]){
                 cylinder(box_width+dwall*2,hinge_slot_r,hinge_slot_r,$fn=sides);
             }
+        }
+        if (label != "" && side_label){
+            translate([0.5,tray_height/2+4,tray_depth/2]){
+                rotate([90,0,-90]){
+                    text_label(tray_depth,tray_height-box_depth);
+                }
+            }
+            translate([tray_width-0.5,tray_height/2+4,tray_depth/2]){
+                rotate([90,0,90]){
+                    text_label(tray_depth,tray_height-box_depth);
+                }
+            }             
         }
     }
 }
@@ -142,13 +160,11 @@ module card_box(){
             }    
         }
         if (label != "" && top_label){
-            translate([box_width/2,box_height/2,box_depth-0.5]){
+            translate([box_width/2,box_height/2-box_depth/2,box_depth-0.5]){
                 rotate([0,0,-90]){
                     text_label(box_width,box_height);
                 }
             }    
-        }
-        if (label != "" && top_label){
             translate([box_width/2,box_height/2-box_height/4,0.5]){
                 rotate([0,0,90]){
                     rotate([0,180,0])text_label(box_width,box_height-box_height/4);
@@ -158,23 +174,37 @@ module card_box(){
     }
 }
 
-
-tray_with_holes();
-//translate([wall+wall_padding/2,box_extension,wall+wall_padding]){
-//// Card box
-//    card_box();
-//}
-translate([wall+wall_padding/2,box_depth,box_extension]){
-// Card box
-    rotate([90,0,0])card_box();
+if (print_in_place) {
+    tray_with_holes();
+    translate([wall+wall_padding/2,box_depth,box_extension]){
+    // Card box
+        rotate([90,0,0])card_box();
+    }
 }
+else {
+    tray_with_holes();
+    translate([tray_width+5,box_depth,box_extension]){
+    // Card box
+        rotate([90,0,0])card_box();
+    }
+}
+
+//tray_with_holes();
+////translate([wall+wall_padding/2,box_extension,wall+wall_padding]){
+////// Card box
+////    card_box();
+////}
+//translate([wall+wall_padding/2,box_depth,box_extension]){
+//// Card box
+//    rotate([90,0,0])card_box();
+//}
 
 //card_box();
 
-//        if (label != "" && top_label){
-//            translate([box_width/2,box_height/2-box_height/4,-0.5]){
-//                rotate([0,0,90]){
-//                    rotate([0,180,0])text_label(box_width,box_height-box_height/4);
+//        if (label != "" && side_label){
+//            translate([0.5,tray_height/2+box_depth,tray_depth/2]){
+//                rotate([90,0,-90]){
+//                    text_label(tray_depth,tray_height-box_depth);
 //                }
 //            }    
 //        }
