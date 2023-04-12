@@ -5,7 +5,7 @@ deck_height = 92;
 // Deck depth
 deck_depth = 30;
 // Number of decks
-n_decks = 1;
+n_decks = 2;
 // Wall width
 wall = 1;
 dwall = wall * 2;
@@ -31,10 +31,12 @@ tab_radius = box_width/4;
 
 fillet = 5;
 
-module tab(radius=10, lenght=40) {
-    hull() {
-        circle(10);
-        translate([lenght-radius*2,0,0]) circle(10);
+module tab(radius=10, lenght=40, depth=2) {
+    linear_extrude(depth) {
+        hull() {
+            circle(radius);
+            translate([lenght-radius*2,0,0]) circle(radius);
+        }
     }
 }
 
@@ -67,22 +69,18 @@ module deck_base() {
 
 module deck_holder() {
     difference() {
-        cube([box_width, box_height, box_depth]);
-        translate([wall,wall,wall]) cube([deck_width+dpadding, deck_height+dpadding, box_depth]);
-//        translate([-long_tab_width/2,long_tab_height/2,-dwall]) cube([long_tab_width,long_tab_height,long_tab_depth]);
-//        translate([box_width-long_tab_width/2,long_tab_height/2,-dwall]) cube([long_tab_width,long_tab_height,long_tab_depth]);
-//        translate([short_tab_width/2,box_height-short_tab_height/2,-dwall]) cube([short_tab_width,short_tab_height,short_tab_depth]);
-//        translate([short_tab_width/2,-short_tab_height/2,-dwall]) cube([short_tab_width,short_tab_height,short_tab_depth]);
-        translate([-long_tab_width/2,long_tab_height/2,-dwall]) cube([long_tab_width,long_tab_height,long_tab_depth]);
-        translate([box_width-long_tab_width/2,long_tab_height/2,-dwall]) cube([long_tab_width,long_tab_height,long_tab_depth]);
-        translate([short_tab_width/2,box_height-short_tab_height/2,-dwall]) cube([short_tab_width,short_tab_height,short_tab_depth]);
-        translate([short_tab_width/2,-short_tab_height/2,-dwall]) cube([short_tab_width,short_tab_height,short_tab_depth]);        
+        union() {
+            deck_walls();
+            deck_base();
+        }
+        translate([0,box_width/2-box_width/8,-wall/2]) rotate([0,0,90]) tab(radius=box_width/8, lenght=box_height-box_width/2, depth=dwall);
+        translate([box_width,box_width/2-box_width/8,-wall/2]) rotate([0,0,90]) tab(radius=box_width/8, lenght=box_height-box_width/2, depth=dwall);
     }
 }
 
-//for (i = [0:n_decks-1]) {
-//    translate([i*(box_width-wall),0,0]) deck_holder();
-//}
+for (i = [0:n_decks-1]) {
+    translate([i*(box_width-wall),0,0]) deck_holder();
+}
 
-deck_walls();
-deck_base();
+//deck_walls();
+//deck_base();
