@@ -5,7 +5,7 @@ deck_height = 92;
 // Deck depth
 deck_depth = 30;
 // Number of decks
-n_decks = 2;
+n_decks = 1;
 // Wall width
 wall = 1;
 dwall = wall * 2;
@@ -18,16 +18,6 @@ wall_overheight = 2;
 box_width = deck_width+dpadding+dwall;
 box_height = deck_height+dpadding+dwall;
 box_depth = deck_depth+dwall+wall_overheight;
-
-long_tab_width = box_width/4;
-long_tab_height = box_height/2;
-long_tab_depth = box_depth*2;
-
-short_tab_width = box_width/2;
-short_tab_height = box_height/4;
-short_tab_depth = box_depth*2;
-
-tab_radius = box_width/4;
 
 fillet = 5;
 
@@ -75,6 +65,9 @@ module deck_holder() {
         }
         translate([0,box_width/2-box_width/8,-wall/2]) rotate([0,0,90]) tab(radius=box_width/8, lenght=box_height-box_width/2, depth=dwall);
         translate([box_width,box_width/2-box_width/8,-wall/2]) rotate([0,0,90]) tab(radius=box_width/8, lenght=box_height-box_width/2, depth=dwall);
+        translate([box_width/4+box_width/8,box_height,-wall/2]) tab(radius=box_width/8, lenght=box_width/2, depth=dwall);
+        translate([box_width/4+box_width/8,0,-wall/2]) tab(radius=box_width/8, lenght=box_width/2, depth=dwall);        
+        translate([box_width/2,box_width/2-box_width/8,-wall/2]) rotate([0,0,90]) tab(radius=box_width/8, lenght=box_height-box_width/2, depth=dwall);
     }
 }
 
@@ -82,5 +75,3 @@ for (i = [0:n_decks-1]) {
     translate([i*(box_width-wall),0,0]) deck_holder();
 }
 
-//deck_walls();
-//deck_base();
