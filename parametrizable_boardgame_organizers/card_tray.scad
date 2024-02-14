@@ -1,3 +1,5 @@
+// Use tray size instead of deck size
+use_tray_size = false;
 // Deck width
 deck_width = 60;
 // Deck height
@@ -15,9 +17,9 @@ dpadding = padding * 2;
 // Wall overheghht over deck
 wall_overheight = 2;
 
-box_width = deck_width+dpadding+dwall;
-box_height = deck_height+dpadding+dwall;
-box_depth = deck_depth+dwall+wall_overheight;
+box_width = use_tray_size ? deck_width / n_decks + wall : deck_width+dpadding+dwall;
+box_height = use_tray_size ? deck_height : deck_height+dpadding+dwall;
+box_depth = use_tray_size ? deck_depth : deck_depth+dwall+wall_overheight;
 
 fillet = 5;
 
