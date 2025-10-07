@@ -4,27 +4,63 @@ box_height = 50.0;
 box_length = 200.0;
 wall = 1.0;
 units = 1;
+anti_slip_lines = true;
+depth = 0.2;
+separation = 1;
+print_box = true;
+print_lid = true;
+
+tolerance = 0.2;
 
 module unit(width, lenght, height, wall, inside){
     if (inside == true) {
         difference () {
             cube([width+wall*2, lenght+wall*2, height+wall]);
             translate([wall, wall, wall]) cube([width, lenght, height]);
+            if (anti_slip_lines == true) {
+                slip_lines(depth, separation, box_width, box_length);
+            }
         }
     }
     else {
         difference() {
             cube([width, lenght, height]);
             translate([wall, wall, wall]) cube([width-wall*2, lenght-wall*2, height-wall]);
+            if (anti_slip_lines == true) {
+                slip_lines(depth, separation, box_width-wall*2, box_length-wall*2);
+            }
         }
     }
 }
 
-for (u = [0:units-1]) {
-    if (inner_dimensions == true) {
-        translate([(wall+box_width) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
+module slip_lines(depth, separation, width, length)
+{
+    for (i = [1:1+separation:length-wall]) {
+        translate([wall, i, wall-depth]) cube([width, 1, depth]);
     }
-    else {
-        translate([(box_width-wall) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
-    }  
 }
+
+if (print_box == true) {
+    for (u = [0:units-1]) {
+        if (inner_dimensions == true) {
+            translate([(wall+box_width) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
+        }
+        else {
+            translate([(box_width-wall) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
+        }  
+    }
+}
+
+if (print_lid == true) {
+    translate([box_width*units+wall*units+wall+10, 0, 0]) {
+        if (inner_dimensions == true) {
+            lid_width = box_width*units+wall*4+wall*(units-1)+tolerance;
+            lid_length = box_length+wall*4+tolerance;
+            difference() {
+                cube([lid_width, lid_length, 10]);
+                translate([wall,wall,wall]) cube([lid_width-wall*2-tolerance, lid_length-wall*2-tolerance, 10-wall]);
+            }
+        }
+    }
+}
+//slip_lines(0.5, 2, box_width, box_length);
