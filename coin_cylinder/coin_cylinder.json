@@ -287,6 +287,24 @@
             "total_height": "0",
             "use_total_height": "false",
             "v_padding": "0.5"
+        },
+        "20 Francos UML": {
+            "added_width": "2",
+            "additional_cap_height": "0",
+            "base_height": "2",
+            "coin_diameter": "27",
+            "coin_height": "6",
+            "h_padding": "0.5",
+            "label": "20 F",
+            "label_on_cap": "true",
+            "label_on_side": "true",
+            "n_coins": "5",
+            "text_size": "3.5",
+            "thread_height": "5",
+            "thread_width": "1.5",
+            "total_height": "0",
+            "use_total_height": "false",
+            "v_padding": "0.2"
         }
     },
     "fileFormatVersion": "1"
