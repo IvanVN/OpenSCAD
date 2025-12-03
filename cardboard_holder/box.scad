@@ -40,16 +40,23 @@ module slip_lines(depth, separation, width, length)
     }
 }
 
+
 if (print_box == true) {
-    for (u = [0:units-1]) {
-        if (inner_dimensions == true) {
-            translate([(wall+box_width) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
+    difference (){
+        for (u = [0:units-1]) {
+            if (inner_dimensions == true) {
+                translate([(wall+box_width) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
+            }
+            else {
+                translate([(box_width-wall) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
+            }  
         }
-        else {
-            translate([(box_width-wall) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
-        }  
+        for (u = [1:units-1]) {
+            translate([wall+box_width*u, wall, wall]) rotate([0,-90,0]) linear_extrude(5, center=true) polygon([[box_height,0],[box_height/2,10],[box_height/2,box_length-10],[box_height,box_length]]);
+        }
     }
 }
+
 
 if (print_lid == true) {
     translate([box_width*units+wall*units+wall+10, 0, 0]) {
@@ -63,4 +70,6 @@ if (print_lid == true) {
         }
     }
 }
+
+//translate([wall+box_width, wall, 0]) rotate([0,-90,0]) linear_extrude(5, center=true) polygon([[box_height,0],[box_height/2,10],[box_height/2,box_length-10],[box_height,box_length]]);
 //slip_lines(0.5, 2, box_width, box_length);

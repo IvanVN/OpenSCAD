@@ -1,0 +1,61 @@
+{
+    "parameterSets": {
+        "box_200x2": {
+            "anti_slip_lines": "true",
+            "box_height": "50",
+            "box_length": "200",
+            "box_width": "50",
+            "depth": "0.2",
+            "inner_dimensions": "true",
+            "print_box": "true",
+            "print_lid": "false",
+            "separation": "1",
+            "tolerance": "0.2",
+            "units": "2",
+            "wall": "1"
+        },
+        "lid_200x2": {
+            "anti_slip_lines": "true",
+            "box_height": "50",
+            "box_length": "200",
+            "box_width": "50",
+            "depth": "0.2",
+            "inner_dimensions": "true",
+            "print_box": "false",
+            "print_lid": "true",
+            "separation": "1",
+            "tolerance": "0.2",
+            "units": "2",
+            "wall": "1"
+        },
+        "box_200x3": {
+            "anti_slip_lines": "true",
+            "box_height": "55",
+            "box_length": "200",
+            "box_width": "52",
+            "depth": "0.2",
+            "inner_dimensions": "true",
+            "print_box": "true",
+            "print_lid": "false",
+            "separation": "1",
+            "tolerance": "0.2",
+            "units": "3",
+            "wall": "1"
+        },
+        "lid_200x3": {
+            "anti_slip_lines": "true",
+            "box_height": "55",
+            "box_length": "200",
+            "box_width": "52",
+            "depth": "0.2",
+            "inner_dimensions": "true",
+            "print_box": "false",
+            "print_lid": "true",
+            "separation": "1",
+            "tolerance": "0.2",
+            "units": "3",
+            "wall": "1"
+        }
+    },
+    "fileFormatVersion": "1"
+}
