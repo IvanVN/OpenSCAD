@@ -1,0 +1,15 @@
+{
+    "parameterSets": {
+        "30": {
+            "depth": "5",
+            "label": "30",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "30"
+        }
+    },
+    "fileFormatVersion": "1"
+}
