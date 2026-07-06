@@ -1,0 +1,15 @@
+{
+    "parameterSets": {
+        "box_test": {
+            "coins_row": "5",
+            "de_padding": "0.5",
+            "depth": "5.5",
+            "di_padding": "1",
+            "diameter": "30.3",
+            "fit_tolerance": "0.1",
+            "separator_width": "0.5",
+            "wall": "1.2"
+        }
+    },
+    "fileFormatVersion": "1"
+}
