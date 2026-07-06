@@ -9,6 +9,136 @@
             "top_window_size": "60",
             "wall": "1",
             "width": "30"
+        },
+        "34": {
+            "depth": "5",
+            "label": "34",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "34"
+        },
+        "39": {
+            "depth": "5",
+            "label": "39",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "39"
+        },
+        "44": {
+            "depth": "5",
+            "label": "44",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "44"
+        },
+        "56": {
+            "depth": "5",
+            "label": "56",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "56"
+        },
+        "64": {
+            "depth": "5",
+            "label": "64",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "64"
+        },
+        "74": {
+            "depth": "5",
+            "label": "74",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "74"
+        },
+        "80": {
+            "depth": "5",
+            "label": "80",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "80"
+        },
+        "90": {
+            "depth": "5",
+            "label": "90",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "90"
+        },
+        "104": {
+            "depth": "5",
+            "label": "104",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "104"
+        },
+        "134": {
+            "depth": "5",
+            "label": "134",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "134"
+        },
+        "164": {
+            "depth": "5",
+            "label": "164",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "164"
+        },
+        "84": {
+            "depth": "5",
+            "label": "84",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "84"
+        },
+        "52": {
+            "depth": "5",
+            "label": "52",
+            "lateral_window_size": "10",
+            "padding": "0.5",
+            "text_size": "6",
+            "top_window_size": "60",
+            "wall": "1",
+            "width": "52"
         }
     },
     "fileFormatVersion": "1"
