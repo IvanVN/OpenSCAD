@@ -2,7 +2,7 @@ inner_dimensions = true;
 box_width = 50.0;
 box_height = 50.0;
 box_length = 200.0;
-wall = 1.0;
+wall = 1.5;
 units = 1;
 anti_slip_lines = true;
 depth = 0.2;
@@ -12,11 +12,15 @@ print_lid = true;
 
 tolerance = 0.2;
 
+// One compartment
 module unit(width, lenght, height, wall, inside){
     if (inside == true) {
         difference () {
+            // Outer dimensions
             cube([width+wall*2, lenght+wall*2, height+wall]);
+            // Inner dimensions
             translate([wall, wall, wall]) cube([width, lenght, height]);
+            // Draw anti-slip lines
             if (anti_slip_lines == true) {
                 slip_lines(depth, separation, box_width, box_length);
             }
@@ -24,8 +28,11 @@ module unit(width, lenght, height, wall, inside){
     }
     else {
         difference() {
+            // Outer dimensions
             cube([width, lenght, height]);
+            // Inner dimensions
             translate([wall, wall, wall]) cube([width-wall*2, lenght-wall*2, height-wall]);
+            // Draw anti-slip lines
             if (anti_slip_lines == true) {
                 slip_lines(depth, separation, box_width-wall*2, box_length-wall*2);
             }
@@ -33,6 +40,7 @@ module unit(width, lenght, height, wall, inside){
     }
 }
 
+// Anti-slip lines
 module slip_lines(depth, separation, width, length)
 {
     for (i = [1:1+separation:length-wall]) {
@@ -40,9 +48,10 @@ module slip_lines(depth, separation, width, length)
     }
 }
 
-
+// Generate the full box
 if (print_box == true) {
     difference (){
+        // Draw as the wanted number of containers
         for (u = [0:units-1]) {
             if (inner_dimensions == true) {
                 translate([(wall+box_width) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
@@ -51,8 +60,9 @@ if (print_box == true) {
                 translate([(box_width-wall) * u, 0, 0]) unit(box_width, box_length, box_height, wall, inner_dimensions);
             }  
         }
+        // Make separators smaller
         for (u = [1:units-1]) {
-            translate([wall+box_width*u, wall, wall]) rotate([0,-90,0]) linear_extrude(5, center=true) polygon([[box_height,0],[box_height/2,10],[box_height/2,box_length-10],[box_height,box_length]]);
+            translate([(wall+box_width)*u, wall, wall]) rotate([0,-90,0]) linear_extrude(wall*2, center=true) polygon([[box_height,0],[box_height/2,10],[box_height/2,box_length-10],[box_height,box_length]]);
         }
     }
 }
