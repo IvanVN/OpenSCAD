@@ -8,9 +8,9 @@ slot_separation=2.0;
 // Size of the slots
 size=50.0;
 // Inner padding for the slots
-size_padding = 1.0;
+size_padding = 0.5;
 // Depth of the slots
-depth=7.0;
+depth=7.5;
 
 // Width of the walls
 wall=1.5;
@@ -23,7 +23,7 @@ inner_size = size+size_padding;
 total_size = inner_size + slot_separation;
 external_x_size = inner_size*rows+slot_separation*rows;
 external_y_size = inner_size*columns+slot_separation*columns;
-tolerance = 0.1;
+tolerance = 0.2;
 
 module pieSlice(a, r, h){
   // a:angle, r:radius, h:height
